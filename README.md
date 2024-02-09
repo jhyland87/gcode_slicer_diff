@@ -13,3 +13,14 @@ Right now it only parses out Prusa sliced Gcode files, though I am working on se
 ``` bash
 uvicorn server:app --reload
 ```
+
+# Examples
+
+Parse header via _http://127.0.0.1:8000/gcode/prusa-sliced-2.gcode/header/parse_
+![Parse header](parse-header.png)
+
+Parse footer via _http://127.0.0.1:8000/gcode/prusa-sliced-2.gcode/footer/parse?cast=true_
+![Parse footer](parse-footer.png)
+
+Compare two gcode configs via _http://127.0.0.1:8000/gcode/compare/prusa-sliced.gcode/prusa-sliced-2.gcode?cast=true_
+![Compare gcode configs](compare-gcode-slicer-config.png)
