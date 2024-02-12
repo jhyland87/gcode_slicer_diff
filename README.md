@@ -17,10 +17,21 @@ uvicorn server:app --reload
 # Examples
 
 Parse header via _http://127.0.0.1:8000/gcode/prusa-sliced-2.gcode/header/parse_
-![Parse header](parse-header.png)
+[_Full parsed header output here_](media/parse-header.json) 
+![Parse header](media/parse-header.png)
 
 Parse footer via _http://127.0.0.1:8000/gcode/prusa-sliced-2.gcode/footer/parse?cast=true_
-![Parse footer](parse-footer.png)
+[_Full parsed footer output here_](media/parse-footer.json)
+![Parse footer](media/parse-footer.png)
 
 Compare two gcode configs via _http://127.0.0.1:8000/gcode/compare/prusa-sliced.gcode/prusa-sliced-2.gcode?cast=true_
-![Compare gcode configs](compare-gcode-slicer-config.png)
+[_Full comparison output here_](media/compare-gcode-slicer-config.json)
+![Compare gcode configs](media/compare-gcode-slicer-config.png)
+
+# ToDo
+1. Properly setup a base class parser that can be inherited and used when creating parsers for other slicers, similar to how Moonraker handles the slicer parser classes ([metadata.py](https://github.com/Arksine/moonraker/blob/master/moonraker/components/file_manager/metadata.py#L109))
+2. Modify the routes to use search/query params for the filenames (or POST data) instead of `/gcode/compare/{left_filename}/{right_filename}`, so gcode files nested in other directories won't throw any errors.
+3. The functions used to read and parse the gcode files ([gcode_utils.py](https://github.com/jhyland87/gcode_slicer_diff/blob/main/gcode_utils.py)) need to be updated to use generators. And for parsing the footer, it will see a great improvement if the file is just parsed in reverse order, instead of grabbing a specific amount of data from the end of the file to parse line by line.
+    POC Of this improved method is [here](dev/gcode-footer-parser-2.0.py), with a screenshot of the comparison below:
+
+    ![New footer parser comparison](media/file-parser-comparison.png)

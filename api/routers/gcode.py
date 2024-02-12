@@ -1,9 +1,7 @@
+import os, sys
 from fastapi import FastAPI, Query, status, Response, Depends, Request, APIRouter
 from fastapi.responses import PlainTextResponse, JSONResponse, ORJSONResponse, UJSONResponse, FileResponse
 from pathlib import Path
-import os
-
-import sys
 # Annotation imports
 from typing import (
     TYPE_CHECKING,
@@ -17,6 +15,9 @@ from typing import (
     Annotated,
     Type,
 )
+
+
+project_root = str(Path(__file__).parent.parent)
 
 sys.path.insert(1, '/Users/jhyland/Documents/scripts/python/gcode_slicer_diff')
 

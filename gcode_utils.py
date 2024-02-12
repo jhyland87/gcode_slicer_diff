@@ -1,8 +1,6 @@
-import asyncio
+import os, re, asyncio
 import aiofiles
 from pathlib import Path
-import os
-import re
 from typing import (
     TYPE_CHECKING,
     Any,
@@ -149,7 +147,7 @@ def parse_line(line: str, delimiter: str='=', cast: bool = False) -> List:
 
     #m = re.match(r"([a-zA-Z0-9_-]+) = (.+)$", line)
 
-    m = re.match(f"([a-zA-Z0-9_\s-]+) {delimiter} (.+)$", line)
+    m = re.match(f"^[\s;]*([a-zA-Z0-9_\s-]+) {delimiter} (.+)$", line)
 
     # If no matches are found, then  abort
     if not m: return None

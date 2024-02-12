@@ -1,0 +1,10 @@
+{
+  "result": {
+    "external perimeters extrusion width": "0.40mm",
+    "perimeters extrusion width": "0.40mm",
+    "infill extrusion width": "0.40mm",
+    "solid infill extrusion width": "0.40mm",
+    "top infill extrusion width": "0.40mm",
+    "first layer extrusion width": "0.40mm"
+  }
+}
